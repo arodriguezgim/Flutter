@@ -32,6 +32,9 @@ class _ListaComponentes extends StatelessWidget {
           subtitle: Text('Componente Avatar'),
           leading: Icon(Icons.person),
           trailing: Icon(Icons.keyboard_arrow_right),
+          onTap: () {
+            Navigator.pushNamed(context, '/avatar');
+          },
         ),
         Divider(),
         ListTile(
