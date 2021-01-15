@@ -1,5 +1,6 @@
 import 'package:componentes/src/pages/alertas_page.dart';
 import 'package:componentes/src/pages/avatar_page.dart';
+import 'package:componentes/src/pages/tarjetas_page.dart';
 import 'package:componentes/src/pagina_principal.dart';
 //import 'package:componentes/src/pagina_principal_temp.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         // Cuando naveguemos hacia la ruta "/second", crearemos el Widget SecondScreen
         '/alertas': (context) => AlertasPage(),
         '/avatar': (context) => AvatarPage(),
+        '/tarjetas': (context) => TarjetasPage(),
       },
     );
   }

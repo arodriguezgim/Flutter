@@ -38,10 +38,13 @@ class _ListaComponentes extends StatelessWidget {
         ),
         Divider(),
         ListTile(
-          title: Text('Titulo de la lista'),
-          subtitle: Text('Cualquier cosa'),
-          leading: Icon(Icons.account_balance_wallet),
+          title: Text('CardViews'),
+          subtitle: Text('Vistas de tarjeta'),
+          leading: Icon(Icons.card_giftcard),
           trailing: Icon(Icons.keyboard_arrow_right),
+          onTap: () {
+            Navigator.pushNamed(context, '/tarjetas');
+          },
         ),
       ],
     );
