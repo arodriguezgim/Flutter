@@ -20,7 +20,7 @@ class _ListaComponentes extends StatelessWidget {
         ListTile(
           title: Text('Alertas'),
           subtitle: Text('Muestra una alerta'),
-          leading: Icon(Icons.notifications),
+          leading: Icon(Icons.notifications, color: Colors.blue),
           trailing: Icon(Icons.keyboard_arrow_right),
           onTap: () {
             Navigator.pushNamed(context, '/alertas');
@@ -30,7 +30,7 @@ class _ListaComponentes extends StatelessWidget {
         ListTile(
           title: Text('Avatar'),
           subtitle: Text('Componente Avatar'),
-          leading: Icon(Icons.person),
+          leading: Icon(Icons.person, color: Colors.blue),
           trailing: Icon(Icons.keyboard_arrow_right),
           onTap: () {
             Navigator.pushNamed(context, '/avatar');
@@ -40,10 +40,23 @@ class _ListaComponentes extends StatelessWidget {
         ListTile(
           title: Text('CardViews'),
           subtitle: Text('Vistas de tarjeta'),
-          leading: Icon(Icons.card_giftcard),
+          leading: Icon(Icons.card_giftcard, color: Colors.blue),
           trailing: Icon(Icons.keyboard_arrow_right),
           onTap: () {
             Navigator.pushNamed(context, '/tarjetas');
+          },
+        ),
+        Divider(),
+        ListTile(
+          title: Text('Formulario'),
+          subtitle: Text('Introduce tus datos'),
+          leading: Icon(
+            Icons.format_align_justify,
+            color: Colors.blue,
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right),
+          onTap: () {
+            Navigator.pushNamed(context, '/formulario');
           },
         ),
       ],

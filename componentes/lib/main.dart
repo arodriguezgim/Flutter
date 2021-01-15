@@ -1,5 +1,6 @@
 import 'package:componentes/src/pages/alertas_page.dart';
 import 'package:componentes/src/pages/avatar_page.dart';
+import 'package:componentes/src/pages/formulario_page.dart';
 import 'package:componentes/src/pages/tarjetas_page.dart';
 import 'package:componentes/src/pagina_principal.dart';
 //import 'package:componentes/src/pagina_principal_temp.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/alertas': (context) => AlertasPage(),
         '/avatar': (context) => AvatarPage(),
         '/tarjetas': (context) => TarjetasPage(),
+        '/formulario': (context) => FormularioPage(),
       },
     );
   }
