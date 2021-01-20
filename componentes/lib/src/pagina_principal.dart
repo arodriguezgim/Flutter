@@ -59,6 +59,19 @@ class _ListaComponentes extends StatelessWidget {
             Navigator.pushNamed(context, '/formulario');
           },
         ),
+        Divider(),
+        ListTile(
+          title: Text('Slider'),
+          subtitle: Text('Cambia el tamaño de tu imagen'),
+          leading: Icon(
+            Icons.image_aspect_ratio,
+            color: Colors.blue,
+          ),
+          trailing: Icon(Icons.image_outlined),
+          onTap: () {
+            Navigator.pushNamed(context, '/slider');
+          },
+        ),
       ],
     );
   }

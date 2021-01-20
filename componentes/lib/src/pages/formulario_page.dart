@@ -8,6 +8,9 @@ class FormularioPage extends StatefulWidget {
 class _FormularioPageState extends State<FormularioPage> {
   String _nombre = "";
   String _email = "";
+  String _password = "";
+  String _fecha = "";
+  TextEditingController _inputFieldDateController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,10 @@ class _FormularioPageState extends State<FormularioPage> {
           _crearInput(),
           Divider(),
           _crearEmail(),
+          Divider(),
+          _crearPassword(),
+          Divider(),
+          _crearFecha(),
           Divider(),
           _crearPersona(),
         ],
@@ -62,6 +69,57 @@ class _FormularioPageState extends State<FormularioPage> {
           labelText: 'Email',
           suffixIcon: Icon(Icons.alternate_email),
           icon: Icon(Icons.email)),
+    );
+  }
+
+  _crearPassword() {
+    return TextField(
+      onChanged: (valor) {
+        setState(() {
+          _password = valor;
+        });
+      },
+      obscureText: true,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Password',
+          labelText: 'Password',
+          suffixIcon: Icon(Icons.lock_open),
+          icon: Icon(Icons.lock)),
+    );
+  }
+
+  void _seleccionarFecha(BuildContext context) async {
+    DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: new DateTime.now(),
+      firstDate: new DateTime(2020),
+      lastDate: new DateTime(2023),
+      locale: Locale('es', 'ES'),
+    );
+
+    //Tenemos en cuenta que podamos seleccionar una fecha nula
+    if (picked != null) {
+      _fecha = picked.toString();
+      _inputFieldDateController.text = _fecha;
+    }
+  }
+
+  _crearFecha() {
+    return TextField(
+      controller: _inputFieldDateController,
+      enableInteractiveSelection: false,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Fecha de Nacimiento',
+          labelText: 'Fecha de Nacimiento',
+          suffixIcon: Icon(Icons.perm_contact_calendar),
+          icon: Icon(Icons.calendar_today)),
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        _seleccionarFecha(context);
+      },
     );
   }
 
