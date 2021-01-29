@@ -11,7 +11,8 @@ class FullMapPage extends StatefulWidget {
 class _FullMapPageState extends State<FullMapPage> {
   MapboxMapController mapController;
   final viaducto = LatLng(40.338116427315015, -1.1058540740711849);
-  final miPosicion = Geolocator.getCurrentPosition();
+  Position miPosicion;
+  LatLng pos = LatLng(1.0, 1.0);
 
   String estiloSeleccionado =
       'mapbox://styles/arodriguezgim/ckkig1y2d0u6p17nuz0l0ky8e';
@@ -20,6 +21,8 @@ class _FullMapPageState extends State<FullMapPage> {
 
   void _onMapCreated(MapboxMapController controller) {
     mapController = controller;
+    //Obtener localizacion
+    _obtenerGeo();
   }
 
   @override
@@ -36,7 +39,7 @@ class _FullMapPageState extends State<FullMapPage> {
       styleString: estiloSeleccionado,
       onMapCreated: _onMapCreated,
       initialCameraPosition: CameraPosition(
-        target: viaducto,
+        target: pos,
         zoom: 14,
       ),
     );
@@ -48,12 +51,7 @@ class _FullMapPageState extends State<FullMapPage> {
       //Boton para situar el mapa en mi posicion
       FloatingActionButton(
         child: Icon(Icons.map),
-        onPressed: () async {
-          await Geolocator.getCurrentPosition().then((value) => {print(value)});
-          setState(() {
-            print(miPosicion);
-          });
-        },
+        onPressed: null,
       ),
       SizedBox(height: 5),
       //Boton para disminuir el zoom
@@ -83,6 +81,13 @@ class _FullMapPageState extends State<FullMapPage> {
         },
       ),
     ]);
+  }
+
+  void _obtenerGeo() async {
+    miPosicion = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    pos = LatLng(miPosicion.latitude, miPosicion.longitude);
+    setState(() {});
   }
 }
 
